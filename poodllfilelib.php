@@ -1255,11 +1255,19 @@ $return=fetchReturnArray(true);
 	
 	//If get here we are downloading from JSP only, ie not converting locally
 		//actually copy over the file from remote server
+
+		// ADAPTATION MCISSE POUR TEST
+		$options['skipcertverify']=true; 
+		// FIN ADAPTATION
+		
 		if(!$fs->create_file_from_url($file_record, $red5_fileurl,$options, false)){
 		//	echo "boo:" . $red5_fileurl;
+			
 			$return['success']=false;
 			array_push($return['messages'],"Unable to create file from url." );
 		}else{
+
+		
 			// echo "yay:" . $red5_fileurl;
 				 //get a file object if successful
 				 $thecontext = context::instance_by_id($contextid);//get_context_instance_by_id($contextid);
@@ -1267,6 +1275,7 @@ $return=fetchReturnArray(true);
 			
 				//if we could get a fileinfo object, return the url of the object
 				 if($fileinfo){
+						
 						//$returnfilepath  = $fileinfo->get_url();
 						//echo "boo:" . $red5_fileurl;
 						$returnfilepath = $filename;
