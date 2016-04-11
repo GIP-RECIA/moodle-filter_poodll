@@ -1164,11 +1164,24 @@ $return=fetchReturnArray(true);
 			//delete here ---
 		}
 	
-	
+	//ADAPTATION GIP RECIA =====> ANCIEN CODE :
 	//setup download information
-	$red5_fileurl= "http://" . $CFG->filter_poodll_servername . 
-						":"  .  $CFG->filter_poodll_serverhttpport . "/poodll/" . $jsp . "?poodllserverid=" . 
-						$CFG->filter_poodll_serverid . "&filename=" . $downloadfilename . "&caller=" . urlencode($CFG->wwwroot);
+	//$red5_fileurl= "http://" . $CFG->filter_poodll_servername . 
+	//					":"  .  $CFG->filter_poodll_serverhttpport . "/poodll/" . $jsp . "?poodllserverid=" . 
+	//					$CFG->filter_poodll_serverid . "&filename=" . $downloadfilename . "&caller=" . urlencode($CFG->wwwroot);
+	// ADAPTATION GIP RECIA // MCISSE 
+	// REDEFINITION DE L'URL =======> NOUVEAU CODE
+	
+	$red5_fileurl = "https://".$CFG->filter_poodll_servername. "/poodll/".$jsp."?poodllserverid=" .
+                                                $CFG->filter_poodll_serverid . "&filename=" . $downloadfilename . "&caller=" . urlencode($CFG->wwwroot);
+	
+
+	// FIN ADAPTATION GIP RECIA
+
+
+
+	
+//	error_log(' POODLL TRYED TO LOAD THIS FILE : '.print_r(get_object_vars($file_record, true)).' FROM  :  '.print_r($red5_fileurl,true),3,'/tmp/myerrorfile.log');
 	//download options
 	$options = array();
 	$options['headers']=null;
