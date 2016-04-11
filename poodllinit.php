@@ -13,10 +13,19 @@ global $CFG;
 
 
 // Setting up the PoodLL Media Server String
-if($CFG->filter_poodll_serverport=='443' || $CFG->filter_poodll_serverport=='80' ){
+if( $CFG->filter_poodll_serverport=='80' ){
 	$protocol='rtmpt';
+}else  if($CFG->filter_poodll_serverport=='443')
+	{
+// ADAPTATION MCISSE __ CORRECTION DU PROTOCOL A GERER SI LE PORT DEFINI EST 443 => SUPPORT DU SSL PAR LE CLIENT GLASH
+	$protocol='rtmps';
 }else{
-	$protocol='rtmp';
+	$protocol= 'rtmp';
 }
 
+
+
+
 $CFG->poodll_media_server = $protocol . '://' . $CFG->filter_poodll_servername . ':' . $CFG->filter_poodll_serverport   . '/' . $CFG->filter_poodll_serverid;
+
+
